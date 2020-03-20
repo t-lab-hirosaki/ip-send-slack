@@ -1,7 +1,7 @@
-SEND IP_address slack!
+SEND IP_address slack or Local!
 ====
 
-IPアドレスをSlackに投げます。
+IPアドレスをSlackに投げます。インターネットに接続していない場合はsocket(UDP)通信を使います。
 ラズパイでの動作を想定しています。
 
 ## Usage
@@ -26,8 +26,29 @@ $ chmod +x raspberry-ip-slack.sh
 
 を記入することにより、電源が入ったときにIPアドレスを教えてくれます。
 
+-------------------------------------------------
+
+ローカル環境では、local_network内のsocket_send.pyを編集してください。
+
+$ vim local_network/socket_send.py
+
+host=''
+
+また、IPアドレス情報データを受け取るPCでrecv.pyを実行してください。
+
+$ vim local_network/recv.py
+
+$ scp local_network/recv.py メインPC
+
+メインPC先で、
+
+$ python4 recv.py
+
+
 ## Author
-sosa 
+
+sosa
+ 
 t-lab menber
  
 
