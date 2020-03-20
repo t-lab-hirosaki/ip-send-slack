@@ -42,7 +42,7 @@ $ scp local_network/recv.py メインPC
 
 メインPC先で、
 
-$ python4 recv.py
+$ python3 recv.py
 
 
 ## Author
