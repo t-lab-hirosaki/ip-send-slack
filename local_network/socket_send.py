@@ -9,7 +9,7 @@ import sys
 
 def main():
   #ip指定
-  host = '10.0.0.XXX' 送信先のIPアドレス
+  host = '10.0.0.XXX' #送信先のIPアドレス
   port = 4000
   count = 0
   sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
