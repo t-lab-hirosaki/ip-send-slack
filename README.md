@@ -22,11 +22,22 @@ $ export SLACK_CHANNEL=''
 
 sleep 60
 
-/home/pi/ip-send-slack/raspberry-ip-slack.sh &
+/home/pi/ip-send-slack/ip_send_slack.sh &
 
 を記入することにより、電源が入ったときにIPアドレスを教えてくれます。
 
 sleepコマンドはネットワークを拾うまでに時間がかかるので必ず入れてください。
+
+## SetUp
+
+セットアップの簡略化の為にstart_up.shを作成しました。
+
+詳しくは下記を参照してください。
+
+$ bash start_up.sh
+
+
+
 
 -------------------------------------------------
 
