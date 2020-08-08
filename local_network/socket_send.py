@@ -6,10 +6,11 @@ import socket
 import time
 from contextlib import closing
 import sys
+import os
 
 def main():
   #ip指定
-  host = '10.0.0.XXX' #送信先のIPアドレス
+  host = os.environ['SLACK_SEND_IP'] #送信先のIPアドレス
   port = 4000
   count = 0
   sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
