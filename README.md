@@ -6,44 +6,34 @@ IPアドレスをSlackに投げます。インターネットに接続してい�
 
 ## Usage
 $ git clone https://github.com/t-lab-hirosaki/ip-send-slack.git
+適宜slackの"URL",チャンネル,個別管理の名前は編集してください。
 
+$ export RPI_NAME=''
+$ export SLACK_TOKEN=''
+$ export SLACK_CHANNEL=''
 
-適宜slackの"URL",チャンネルは編集してください。
-
-$ vim raspberry-ip-slack.sh
-
-slack_URL=''
-
-channel=''
+再起動する可能性がある場合上記のexportコマンドはbash_profileやbashrcに記述しておくことをオススメします。
 
 raspberry-ip-slack.shに権限を付与してください。
-
 $ chmod +x raspberry-ip-slack.sh
 
 /etc/rc.local内に
-
-./raspberry-ip-slack.sh
+sleep 60
+/home/pi/ip-send-slack/raspberry-ip-slack.sh &
 
 を記入することにより、電源が入ったときにIPアドレスを教えてくれます。
+sleepコマンドはネットワークを拾うまでに時間がかかるので必ず入れてください。
 
 -------------------------------------------------
 
-ローカル環境では、local_network内のsocket_send.pyを編集してください。
+socket(UDP)通信を用いる場合はsend先のipを記述してください。
 
-$ vim local_network/socket_send.py
+$ export SLACK_SEND_IP=''
 
-host=''
+また、受け側のPCのセットアップも必要です。
 
-また、IPアドレス情報データを受け取るPCでrecv.pyを実行してください。
-
-$ vim local_network/recv.py
-
-$ scp local_network/recv.py メインPC
-
-メインPC先で、
-
-$ python3 recv.py
-
+受け側のサーバとなるPCで以下の記述をしてip_slack_recv.py実行してください。
+$ export SLACK_TOKEN=''
 
 ## Author
 
